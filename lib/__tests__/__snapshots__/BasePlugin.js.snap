@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasePlugin static match(subject, callback) throws "Not implemented" exception 1`] = `"Not implemented"`;
