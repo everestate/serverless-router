@@ -1,0 +1,39 @@
+# Build
+.webpack/*
+
+# Config
+.aws/config.json
+*.env
+.npmrc
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Ignore lock file from npm@5, we use yarn and yarn.lock instead
+package-lock.json
+
+# Dependency directories
+node_modules
+
+# Serverless directories
+.serverless
+
+# Optional npm cache directory
+.npm
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+
+# VSCode
+.vscode/

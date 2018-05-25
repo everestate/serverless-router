@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ServerlessRouter constructor(plugins) throws error on plugin duplicates 1`] = `"Plugin \\"typeplugin\\" already registered"`;
+
+exports[`ServerlessRouter registerPlugin(Plugin) throws error when plugin already registered 1`] = `"Plugin \\"evenoddplugin\\" already registered"`;

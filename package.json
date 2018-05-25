@@ -1,0 +1,38 @@
+{
+  "name": "@everestate/serverless-router",
+  "version": "0.0.1",
+  "description": "Serverless Router",
+  "main": "index.js",
+  "keywords": [
+    "serverless",
+    "lambda",
+    "routing",
+    "router",
+    "route",
+    "restful"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "coverage": "jest --coverage --no-cache"
+  },
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:everestate/serverless-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/everestate/serverless-router/issues"
+  },
+  "author": "Everestate",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.2",
+    "jest": "^22.4.2"
+  }
+}
