@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Serverless Router",
   "main": "index.js",
+  "keywords": [
+    "serverless",
+    "lambda",
+    "routing",
+    "router",
+    "route",
+    "restful"
+  ],
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
