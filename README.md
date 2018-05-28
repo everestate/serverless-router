@@ -78,4 +78,4 @@ There are few implementations for testing purposes you might be interesting in:
 
 ## License
 
-MIT
+[MIT](./LICENSE)
