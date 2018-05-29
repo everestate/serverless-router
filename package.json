@@ -1,19 +1,18 @@
 {
   "name": "@everestate/serverless-router",
-  "version": "0.0.1",
-  "description": "Serverless Router",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "Fast, minimalist, pluggable, universal router.",
   "keywords": [
     "serverless",
     "lambda",
     "routing",
     "router",
-    "route",
-    "restful"
+    "route"
   ],
+  "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --verbose",
     "coverage": "jest --coverage --no-cache"
   },
   "engines": {

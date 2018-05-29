@@ -1,6 +1,6 @@
 # @everestate/serverless-router
 
-> Serverless Router
+> Fast, minimalist, pluggable, universal router.
 
 ## Installation
 
@@ -51,20 +51,18 @@ router.web
 router.dispatch(event, context, callback);
 ```
 
-### When route is not found
+### When route is mismatched
 
-`serverless-router` has default handler to catch mismatching request.
-It responds with `status` `404` and `{ message: "ServerlessRouter can't find this route" }` in the body.
+By default `serverless-router` will throw `error` on route mismatch.
 
-Of course it's possible to define your custom mismatch handler:
+It's possible to define custom mismatch handler, and it would be called with same arguments `dispatch` was called:
 
 ```javascript
 router.mismatch((event, context, callback) => {
   const { path, httpMethod } = event;
-  console.log(`ServerlessRouter mismatch: ${httpMethod} ${path}`);
   return callback(null, {
-    statusCode: '500',
-    body: '',
+    statusCode: '404',
+    body: JSON.stringify({ message: `ServerlessRouter can't find the route ${httpMethod} ${path}` }),
   });
 });
 ```
@@ -80,4 +78,4 @@ There are few implementations for testing purposes you might be interesting in:
 
 ## License
 
-MIT
+[MIT](./LICENSE)
