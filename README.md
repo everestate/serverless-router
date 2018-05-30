@@ -22,18 +22,16 @@ To use `serverless-router` you will need at least one of its plugins.
 const ServerlessRouter = require('@everestate/serverless-router');
 const ServerlessRouterWebPlugin = require('@everestate/serverless-router-plugin-web');
 
-const userAppointmentsService = require('../services/userAppointmentsService');
+cosnt userService = require('../services/userService');
 
 function dispatch(event) {
   const router = new ServerlessRouter([ServerlessRouterWebPlugin]);
 
   router.web
-    .get('/users/:userId/appointments', () =>
-      userAppointmentsService.findAllByUserId(event.pathParameters.userId)) // returns promise
-    .post('/users/:userId/appointments', () =>
-      userAppointmentsService.createAppointment(event.body, event.pathParameters.userId)) // returns promise
-    .delete('/users/:userId/appointments/:appointmentId', () =>
-      userAppointmentsService.deleteAppointment(event.pathParameters.appointmentId, event.pathParameters.userId)); // returns promise
+    .get('/users/:id', () =>
+      userService.getUserById(event.pathParameters.id)) // returns promise
+    .delete('/users/:id', () =>
+      userService.deleteUserById(event.pathParameters.id)); // returns promise
 
   router.mismatch(() => {
     const { path, httpMethod } = event;
