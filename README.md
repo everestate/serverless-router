@@ -22,33 +22,32 @@ To use `serverless-router` you will need at least one of its plugins.
 const ServerlessRouter = require('@everestate/serverless-router');
 const ServerlessRouterWebPlugin = require('@everestate/serverless-router-plugin-web');
 
-const router = new ServerlessRouter([ServerlessRouterWebPlugin]);
+cosnt userService = require('../services/userService');
 
-router.web
-  .get('/users/:userId/appointments', (event, context, callback) => {
-    const appointments = findAppointmentsByUserId(event.pathParameters.userId);
-    return callback(null, {
-      statusCode: '200',
-      body: JSON.stringify({ appointments }),
-    });
-  })
-  .post('/users/:userId/appointments', (event, context, callback) => {
-    const { userId } = event.pathParameters;
-    const appointment = createAppointment({ ...event.body, userId });
-    return callback(null, {
-      statusCode: '201',
-      body: JSON.stringify({ appointment }),
-    });
-  })
-  .delete('/users/:userId/appointments/:appointmentId', (event, context, callback) => {
-    const { appointmentId } = event.pathParameters;
-    deleteAppointmentById(appointmentId);
-    return callback(null, {
-      statusCode: '204',
-      body: '',
-    });
+function dispatch(event) {
+  const router = new ServerlessRouter([ServerlessRouterWebPlugin]);
+
+  router.web
+    .get('/users/:id', () =>
+      userService.getUserById(event.pathParameters.id)) // returns promise
+    .delete('/users/:id', () =>
+      userService.deleteUserById(event.pathParameters.id)); // returns promise
+
+  router.mismatch(() => {
+    const { path, httpMethod } = event;
+    return Promise.reject(new Error(`Unknown route: ${httpMethod} ${path}`));
   });
-router.dispatch(event, context, callback);
+
+  return router.dispatch(event);
+}
+
+function myLambdaHandler(event, context, callback) {
+  return dispatch(event)
+    .then(result =>
+      callback(null, { statusCode: result.code, body: JSON.stringify({ payload: result.payload }) }))
+    .catch(error =>
+      callback(null, { statusCode: '500', body: JSON.stringify({ message: error.message }) }));
+}
 ```
 
 ### When route is mismatched
