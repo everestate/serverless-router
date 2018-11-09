@@ -20,12 +20,12 @@ To use `serverless-router` you will need at least one of its plugins.
 
 ```javascript
 const ServerlessRouter = require('@everestate/serverless-router');
-const ServerlessRouterWebPlugin = require('@everestate/serverless-router-plugin-web');
+const WebPlugin = require('@everestate/serverless-router-plugin-web');
 
 cosnt userService = require('../services/userService');
 
 function dispatch(event) {
-  const router = new ServerlessRouter([ServerlessRouterWebPlugin]);
+  const router = new ServerlessRouter([WebPlugin]);
 
   router.web
     .get('/users/:id', () =>
