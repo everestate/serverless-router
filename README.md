@@ -12,15 +12,15 @@ npm install @everestate/serverless-router --save
 
 To use `serverless-router` you will need at least one of its plugins.
 
-* [serverless-router-plugin-web](https://github.com/everestate/serverless-router-plugin-web)
-* [serverless-router-plugin-dynamodb ](https://github.com/everestate/serverless-router-plugin-dynamodb)
-* [serverless-router-plugin-dynamics](https://github.com/everestate/serverless-router-plugin-dynamics)
+* [serverless-router-web](https://github.com/everestate/serverless-router-web)
+* [serverless-router-aws](https://github.com/everestate/serverless-router-aws)
+* [serverless-router-dynamics](https://github.com/everestate/serverless-router-dynamics)
 * and others
 
 
 ```javascript
 const Router = require('@everestate/serverless-router');
-const Web = require('@everestate/serverless-router-plugin-web');
+const Web = require('@everestate/serverless-router-web');
 
 cosnt userService = require('../services/userService');
 
