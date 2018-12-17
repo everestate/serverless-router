@@ -28,10 +28,14 @@ function dispatch(event) {
   const router = new Router([Web]);
 
   router.web
+    .post('/users', () =>
+      userService.createUser(event.body)) // returns promise
     .get('/users/:id', () =>
       userService.getUserById(event.pathParameters.id)) // returns promise
+    .patch('/users/:id', () =>
+      userService.updateUser(event.pathParameters.id, event.body)) // returns promise
     .delete('/users/:id', () =>
-      userService.deleteUserById(event.pathParameters.id)); // returns promise
+      userService.deleteUser(event.pathParameters.id)); // returns promise
 
   router.mismatch(() => {
     const { path, httpMethod } = event;
@@ -54,7 +58,7 @@ function myLambdaHandler(event, context, callback) {
 
 By default `serverless-router` will throw `error` on route mismatch.
 
-It's possible to define custom mismatch handler, and it would be called with same arguments `dispatch` was called:
+It's possible to define custom mismatch handler, and it would be called with same arguments as `dispatch` was called:
 
 ```javascript
 router.mismatch((event, context, callback) => {
