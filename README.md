@@ -72,12 +72,7 @@ router.mismatch((event, context, callback) => {
 
 ## Plugins
 
-There are few implementations for testing purposes you might be interesting in:
-  * [`lib/__tests__/__fixtures__/EvenOddPlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/EvenOddPlugin.js)
-  * [`lib/__tests__/__fixtures__/TypePlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/TypePlugin.js)
-  * [`lib/__tests__/__fixtures__/WeekdayPlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/WeekdayPlugin.js)
-
-@TODO: describe plugin implementation principles
+Check the [docs/plugins.md](./docs/plugins.md) to find out how to implement the new plugin.
 
 ## License
 
