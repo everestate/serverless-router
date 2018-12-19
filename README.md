@@ -12,26 +12,30 @@ npm install @everestate/serverless-router --save
 
 To use `serverless-router` you will need at least one of its plugins.
 
-* [serverless-router-plugin-web](https://github.com/everestate/serverless-router-plugin-web)
-* [serverless-router-plugin-dynamodb ](https://github.com/everestate/serverless-router-plugin-dynamodb)
-* [serverless-router-plugin-dynamics](https://github.com/everestate/serverless-router-plugin-dynamics)
+* [serverless-router-web](https://github.com/everestate/serverless-router-web)
+* [serverless-router-aws](https://github.com/everestate/serverless-router-aws)
+* [serverless-router-dynamics](https://github.com/everestate/serverless-router-dynamics)
 * and others
 
 
 ```javascript
-const ServerlessRouter = require('@everestate/serverless-router');
-const WebPlugin = require('@everestate/serverless-router-plugin-web');
+const Router = require('@everestate/serverless-router');
+const Web = require('@everestate/serverless-router-web');
 
 cosnt userService = require('../services/userService');
 
 function dispatch(event) {
-  const router = new ServerlessRouter([WebPlugin]);
+  const router = new Router([Web]);
 
   router.web
+    .post('/users', () =>
+      userService.createUser(event.body)) // returns promise
     .get('/users/:id', () =>
       userService.getUserById(event.pathParameters.id)) // returns promise
+    .patch('/users/:id', () =>
+      userService.updateUser(event.pathParameters.id, event.body)) // returns promise
     .delete('/users/:id', () =>
-      userService.deleteUserById(event.pathParameters.id)); // returns promise
+      userService.deleteUser(event.pathParameters.id)); // returns promise
 
   router.mismatch(() => {
     const { path, httpMethod } = event;
@@ -54,7 +58,7 @@ function myLambdaHandler(event, context, callback) {
 
 By default `serverless-router` will throw `error` on route mismatch.
 
-It's possible to define custom mismatch handler, and it would be called with same arguments `dispatch` was called:
+It's possible to define custom mismatch handler, and it would be called with same arguments as `dispatch` was called:
 
 ```javascript
 router.mismatch((event, context, callback) => {
@@ -68,12 +72,7 @@ router.mismatch((event, context, callback) => {
 
 ## Plugins
 
-There are few implementations for testing purposes you might be interesting in:
-  * [`lib/__tests__/__fixtures__/EvenOddPlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/EvenOddPlugin.js)
-  * [`lib/__tests__/__fixtures__/TypePlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/TypePlugin.js)
-  * [`lib/__tests__/__fixtures__/WeekdayPlugin.js`](https://github.com/everestate/serverless-router/blob/master/lib/__tests__/__fixtures__/WeekdayPlugin.js)
-
-@TODO: describe plugin implementation principles
+Check the [docs/plugins.md](./docs/plugins.md) to find out how to implement the new plugin.
 
 ## License
 
