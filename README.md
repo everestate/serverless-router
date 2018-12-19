@@ -1,6 +1,6 @@
 # @everestate/serverless-router
 
-> Fast, minimalist, pluggable, universal router.
+> Dependency-free, minimalist, pluggable, universal router.
 
 ## Installation
 
