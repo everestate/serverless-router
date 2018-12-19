@@ -2,7 +2,7 @@ The router delegates route matching to its plugins. So, routing subject could be
 
 Let's implement the simple plugin to route numbers as either even or odd ones.
 
-1. We need to declare new class which is extended from 'BasePlugin':
+1. We need to declare new class which is extended from "`BasePlugin`":
 
     ```javascript
     const BasePlugin = require('@everestate/serverless-router/BasePlugin');
@@ -11,7 +11,7 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
     }
     ```
 
-2. Router expects plugin to provide one or more public intefaces available to plugin users.
+2. Router expects plugin to provide one or more public interfaces available to plugin users.
 
     ```javascript
     class EvenOdd extends BasePlugin {
@@ -53,6 +53,21 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
     ```
 
     **`match`** expects routing context and returns matching callback. Mathing callback is used during dispatch process. Router invokes matching context with the routing subject.
+
+The plugin would be accessible on router's instance by lower-cased class name as
+
+    ```javascript
+    const router = new Router([EvenOdd]);
+    router.evenodd.even();
+    ```
+
+The accessibility alias could be customized with
+
+    ```javascript
+    class EvenOdd extends BasePlugin {
+      static get pluginName() { return 'foobar'; }
+    }
+    ```
 
 That's basically it, let's try it out now:
 
