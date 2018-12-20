@@ -12,7 +12,6 @@ npm install @everestate/serverless-router --save
 
 To use `serverless-router` you will need at least one of its plugins.
 
-* [serverless-router-web](https://github.com/everestate/serverless-router-web)
 * [serverless-router-aws](https://github.com/everestate/serverless-router-aws)
 * [serverless-router-dynamics](https://github.com/everestate/serverless-router-dynamics)
 * and others
@@ -20,14 +19,14 @@ To use `serverless-router` you will need at least one of its plugins.
 
 ```javascript
 const Router = require('@everestate/serverless-router');
-const Web = require('@everestate/serverless-router-web');
+const { Http } = require('@everestate/serverless-router-aws');
 
 cosnt userService = require('../services/userService');
 
 function dispatch(event) {
-  const router = new Router([Web]);
+  const router = new Router([Http]);
 
-  router.web
+  router.http
     .post('/users', () =>
       userService.createUser(event.body)) // returns promise
     .get('/users/:id', () =>
