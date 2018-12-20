@@ -1,7 +1,7 @@
 {
   "name": "@everestate/serverless-router",
   "version": "0.3.0",
-  "description": "Dependency-free, minimalist, pluggable, universal router.",
+  "description": "Serverless, minimalist, pluggable, universal router.",
   "keywords": [
     "serverless",
     "lambda",
