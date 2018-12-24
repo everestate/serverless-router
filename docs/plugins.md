@@ -102,6 +102,5 @@ There are few more plugin examples you might be interesting in:
   * [`lib/__tests__/__fixtures__/WeekdayPlugin.js`](../lib/__tests__/__fixtures__/WeekdayPlugin.js)
 
 Also some real plugin packages:
-  * [serverless-router-web](https://github.com/everestate/serverless-router-web)
   * [serverless-router-aws](https://github.com/everestate/serverless-router-aws)
   * [serverless-router-dynamics](https://github.com/everestate/serverless-router-dynamics)
