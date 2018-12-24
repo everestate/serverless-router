@@ -56,18 +56,18 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
 
 The plugin would be accessible on router's instance by lower-cased class name as
 
-    ```javascript
-    const router = new Router([EvenOdd]);
-    router.evenodd.even();
-    ```
+  ```javascript
+  const router = new Router([EvenOdd]);
+  router.evenodd.even();
+  ```
 
 The accessibility alias could be customized with
 
-    ```javascript
-    class EvenOdd extends BasePlugin {
-      static get pluginName() { return 'foobar'; }
-    }
-    ```
+  ```javascript
+  class EvenOdd extends BasePlugin {
+    static get pluginName() { return 'foobar'; }
+  }
+  ```
 
 That's basically it, let's try it out now:
 
