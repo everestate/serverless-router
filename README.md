@@ -1,4 +1,4 @@
-# @everestate/serverless-router
+# @everestate/serverless-router [![npm version](https://badge.fury.io/js/%40everestate%2Fserverless-router.svg)](https://www.npmjs.com/package/@everestate/serverless-router)
 
 > Serverless, minimalist, pluggable, universal router.
 
