@@ -45,14 +45,17 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
 
       static match(reminder) {
         return (number) => {
-          if (!Number.isInteger(number) || number === 0) { return false; }
-          return number % 2 === reminder;
+          if (!Number.isInteger(number) || number === 0) { return null; }
+          if (number % 2 !== reminder) { return null; }
+          return { reminder };
         };
       }
     }
     ```
 
-    **`match`** expects routing context and returns matching callback. Mathing callback is used during dispatch process. Router invokes matching context with the routing subject.
+    **`match`** expects routing context and returns matching function. Matching function is invoked during dispatch process.
+    When all conditions are met (successfull "match"), matching function returns context object. So, it could empty object or class instance.
+    When any of conditions are not met, matching function returns null.
 
 The plugin would be accessible on router's instance by lower-cased class name as
 
