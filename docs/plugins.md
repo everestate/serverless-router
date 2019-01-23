@@ -2,7 +2,7 @@ The router delegates route matching to its plugins. So, routing subject could be
 
 Let's implement the simple plugin to route numbers as either even or odd ones.
 
-1. We need to declare new class which is extended from "`BasePlugin`":
+1. We need to declare a new class which is extended from "`BasePlugin`":
 
     ```javascript
     const BasePlugin = require('@everestate/serverless-router/BasePlugin');
@@ -11,7 +11,7 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
     }
     ```
 
-2. Router expects plugin to provide one or more public interfaces available to plugin users.
+2. Router expects the plugin to provide one or more public interfaces available to plugin users.
 
     ```javascript
     class EvenOdd extends BasePlugin {
@@ -29,9 +29,9 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
 
     **`appendRoute`** accepts the routing context (which passed to matching function on dispatch) and user callback.
 
-    **`callback`** is the user callback which is called when router matches the route. The router takes cake of it, so just passing it down.
+    **`callback`** is the user callback which is called when router matches the route. The router takes cake of it, so just pass it down.
 
-3. Router expects plugin to implement "match" function.
+3. Router expects the plugin to implement "match" function.
 
     ```javascript
     class EvenOdd extends BasePlugin {
@@ -43,19 +43,19 @@ Let's implement the simple plugin to route numbers as either even or odd ones.
         return this.appendRoute(1, callback);
       }
 
-      static match(reminder) {
+      static match(remainder) {
         return (number) => {
           if (!Number.isInteger(number) || number === 0) { return null; }
-          if (number % 2 !== reminder) { return null; }
-          return { reminder };
+          if (number % 2 !== remainder) { return null; }
+          return { remainder };
         };
       }
     }
     ```
 
     **`match`** expects routing context and returns matching function. Matching function is invoked during dispatch process.
-    When all conditions are met (successfull "match"), matching function returns context object. So, it could empty object or class instance.
-    When any of conditions are not met, matching function returns null.
+    When all conditions are met (successfull "match"), matching function returns context object. So, it could be an empty object or a class instance.
+    When any of the conditions are not met, matching function returns null.
 
 The plugin would be accessible on router's instance by lower-cased class name as
 

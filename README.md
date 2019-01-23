@@ -57,7 +57,7 @@ function myLambdaHandler(event, context, callback) {
 
 By default `serverless-router` will throw `error` on route mismatch.
 
-It's possible to define custom mismatch handler, and it would be called with same arguments as `dispatch` was called:
+It's possible to define a custom mismatch handler, and it would be called with same arguments as `dispatch` was called:
 
 ```javascript
 router.mismatch((event, context, callback) => {
