@@ -2,8 +2,4 @@
 
 exports[`ServerlessRouter constructor(plugins) throws error on plugin duplicates 1`] = `"Plugin \\"type\\" already registered"`;
 
-exports[`ServerlessRouter dispatch throws error when route is not found 1`] = `"ServerlessRouter can't find the route"`;
-
-exports[`ServerlessRouter dispatch throws error when there are no routes 1`] = `"ServerlessRouter can't find the route"`;
-
 exports[`ServerlessRouter registerPlugin(Plugin) throws error when plugin already registered 1`] = `"Plugin \\"evenodd\\" already registered"`;
