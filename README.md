@@ -69,6 +69,20 @@ router.mismatch((event, context, callback) => {
 });
 ```
 
+## Middleware
+
+When middleware are set, they will be called before each matched route in order they registered.
+Middleware callback is expected to return `Promise` and could be defined with `use`:
+```
+router.use((event, context, callback) => {
+    const { source } = event;
+    if (source === 'bad source') {
+        return Promise.reject(new Error('Bad event source'));
+    }
+    return Promise.resolve();
+})
+```
+
 ## Plugins
 
 Check the [docs/plugins.md](./docs/plugins.md) to find out how to implement the new plugin.
