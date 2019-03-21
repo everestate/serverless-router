@@ -14,6 +14,7 @@ To use `serverless-router` you will need at least one of its plugins.
 
 * [serverless-router-aws](https://github.com/everestate/serverless-router-aws)
 * [serverless-router-dynamics](https://github.com/everestate/serverless-router-dynamics)
+* [serverless-router-event](https://github.com/everestate/serverless-router-event)
 * and others
 
 
