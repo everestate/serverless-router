@@ -1,6 +1,6 @@
 {
   "name": "@everestate/serverless-router",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Serverless, minimalist, pluggable, universal router.",
   "keywords": [
     "serverless",
@@ -31,10 +31,10 @@
     "access": "public"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.4.1",
-    "jest": "^24.5.0"
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "jest": "^24.9.0"
   }
 }
